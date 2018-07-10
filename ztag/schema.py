@@ -219,8 +219,7 @@ zgrab_http_headers = SubRecord({
     "proxy_authenticate":CensysString(),
     "public_key_pins":CensysString(),
     "refresh":CensysString(),
-    # Currently misindexed in IPv4 schema
-    #"referer":CensysString(),
+    "referer":CensysString(),
     "retry_after":CensysString(),
     "server":CensysString(),
     "set_cookie":CensysString(),
@@ -335,7 +334,7 @@ ztag_ssh_v2 = SubRecord({
                 "valid_before": Timestamp(doc="Timestamp of when certificate expires. Timezone is UTC."),
                 "length": Signed64BitInteger(),
             }),
-            # "reserved": Binary(),
+            "reserved": Binary(),
             "signature_key": SubRecord({
                 "key_algorithm": zgrab2_ssh.KeyAlgorithm(),
                 "fingerprint_sha256": HexString(),
