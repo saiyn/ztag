@@ -161,12 +161,6 @@ ztag_heartbleed = SubRecord({
     "timestamp":Timestamp(),
 })
 
-ztag_extended_random = SubRecord({
-    "extended_random_support": Boolean(),
-    "metadata":local_metadata,
-    "timestamp":Timestamp(),
-})
-
 ztag_smtp_starttls = SubRecord({
     "banner": CensysString(),
     "ehlo": CensysString(),
@@ -611,7 +605,6 @@ ztag_schemas = [
     ("ztag_tls2", ztag_tls_support),
     ("ztag_tls3", ztag_tls_support),
     ("ztag_modbus", ztag_modbus),
-    ("ztag_extended_random", ztag_extended_random),
     ("ztag_ssh_v2", ztag_ssh_v2),
     ("ztag_dns_lookup", ztag_dns_lookup),
     ("ztag_bacnet", ztag_bacnet),
@@ -1125,7 +1118,6 @@ ipv4_host = Record({
                     "tls_1_2": ztag_tls_support,
                     #"tls_1_3": ztag_tls_support,
                     "ecdhe": ztag_ecdh,
-                    #"extended_random":ztag_extended_random,
                 }, category="443/HTTPS")
             }),
             Port(80):SubRecord({
