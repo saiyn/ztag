@@ -517,14 +517,14 @@ ztag_smb = SubRecord({
 })
 
 ztag_upnp_discovery = SubRecord({
-    "usn": String(),
-    "agent": String(),
-    "st": String(),
-    "ext": String(),
-    "location": String(),
-    "server": String(),
-    "cache_control": String(),
-    "x_user_agent": String(),
+    "usn": CensysString(),
+    "agent": CensysString(),
+    "st": CensysString(),
+    "ext": CensysString(),
+    "location": CensysString(),
+    "server": CensysString(),
+    "cache_control": CensysString(),
+    "x_user_agent": CensysString(),
     "metadata": local_metadata,
 })
 
