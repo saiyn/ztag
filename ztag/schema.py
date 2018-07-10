@@ -1116,7 +1116,6 @@ ipv4_host = Record({
                     "ssl_3": ztag_tls_support,
                     "tls_1_1": ztag_tls_support,
                     "tls_1_2": ztag_tls_support,
-                    #"tls_1_3": ztag_tls_support,
                     "ecdhe": ztag_ecdh,
                 }, category="443/HTTPS")
             }),
