@@ -154,19 +154,6 @@ ztag_tls_type = SubRecordType({
 
 ztag_tls = ztag_tls_type()
 
-ztag_sslv2 = SubRecord({
-    "support": Boolean(),
-    "extra_clear": Boolean(),
-    "export": Boolean(),
-    "certificate": zgrab_certificate,
-    "ciphers": ListOf(SubRecord({
-        "name": String(),
-        "id": Unsigned32BitInteger(),
-    })),
-    "metadata": local_metadata,
-    "timestamp":Timestamp(),
-})
-
 ztag_heartbleed = SubRecord({
     "heartbeat_enabled":Boolean(),
     "heartbleed_vulnerable":Boolean(),
@@ -619,7 +606,6 @@ ztag_schemas = [
     ("ztag_dh_export", ztag_dh_export),
     ("ztag_rsa_export", ztag_rsa_export),
     ("ztag_ecdh", ztag_ecdh),
-    ("ztag_sslv2", ztag_sslv2),
     ("ztag_sslv3", ztag_tls_support),
     ("ztag_tls1", ztag_tls_support),
     ("ztag_tls2", ztag_tls_support),
@@ -1134,7 +1120,6 @@ ipv4_host = Record({
                     "dhe": ztag_dh,
                     "rsa_export": ztag_rsa_export,
                     "dhe_export": ztag_dh_export,
-                    #"ssl_2": ztag_sslv2, # XXX
                     "ssl_3": ztag_tls_support,
                     "tls_1_1": ztag_tls_support,
                     "tls_1_2": ztag_tls_support,
@@ -1161,7 +1146,6 @@ ipv4_host = Record({
             Port(25):SubRecord({
                 "smtp":SubRecord({
                     "starttls": ztag_smtp_starttls,
-                    #"ssl_2": ztag_sslv2, # XXX
                 }, category="25/SMTP"),
             }),
             Port(23):SubRecord({
@@ -1187,13 +1171,11 @@ ipv4_host = Record({
             Port(110):SubRecord({
                 "pop3":SubRecord({
                     "starttls":ztag_mail_starttls,
-                    #"ssl_2": ztag_sslv2, # XXX
                 }, category="110/POP3")
             }),
             Port(143):SubRecord({
                 "imap":SubRecord({
                     "starttls":ztag_mail_starttls,
-                    #"ssl_2": ztag_sslv2, # XXX
                 }, category="143/IMAP")
             }),
             Port(445):SubRecord({
@@ -1204,19 +1186,16 @@ ipv4_host = Record({
             Port(993):SubRecord({
                 "imaps":SubRecord({
                     "tls":ztag_mail_tls,
-                    #"ssl_2": ztag_sslv2, # XXX
                 }, category="993/IMAPS")
             }),
             Port(995):SubRecord({
                 "pop3s":SubRecord({
                     "tls":ztag_mail_tls,
-                    #"ssl_2": ztag_sslv2, # XXX
                 }, category="995/POP3S")
             }),
             Port(587):SubRecord({
                 "smtp":SubRecord({
                     "starttls": ztag_smtp_starttls,
-                    #"ssl_2": ztag_sslv2,  # XXX
                 }, category="587/SMTP")
             }),
             Port(502):SubRecord({
